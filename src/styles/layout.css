@@ -1,0 +1,13 @@
+.layout {
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+.layout__header {
+  padding: 16px;
+  background-color: rgb(235, 235, 235);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
