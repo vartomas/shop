@@ -1,6 +1,5 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { User, useSupabaseClient } from '@supabase/auth-helpers-react';
-import useLocalStorage from '@/utils/useLocalStorage';
 
 interface Props {
   children: ReactNode;
@@ -9,11 +8,10 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => {
   const [user, setUser] = useState<User>();
   const supabaseClient = useSupabaseClient();
-  const { set, remove } = useLocalStorage();
 
   useEffect(() => {
     supabaseClient.auth.refreshSession();
-  }, [supabaseClient.auth]);
+  }, []);
 
   useEffect(() => {
     supabaseClient.auth.onAuthStateChange((event, session) => {
@@ -33,7 +31,7 @@ const Layout: FC<Props> = ({ children }) => {
         }
       }
     });
-  }, [supabaseClient.auth, remove, set]);
+  }, []);
 
   return (
     <div className="layout">
