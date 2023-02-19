@@ -1,5 +1,5 @@
-import { supabaseBrowserClient } from '@/supabase/supabase';
 import { useState } from 'react';
+import { supabaseBrowserClient } from '@/supabase/supabase';
 
 const Home = () => {
   const [email, setEmail] = useState('');
