@@ -1,0 +1,30 @@
+.header {
+  padding: 16px;
+  background-color: lightgray;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__user__email {
+  font-size: 14px;
+  margin-right: 16px;
+}
+
+.header__user__icon {
+  font-size: 36px;
+  cursor: pointer;
+  color: black;
+  transition: color 0.2s ease-in-out;
+}
+
+.header__user__icon:hover {
+  color: darkslategray;
+}
