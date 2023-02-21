@@ -1,0 +1,24 @@
+.button {
+  border: none;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button--enabled {
+  background-color: #219ebc;
+  color: white;
+  cursor: pointer;
+}
+
+.button--enabled:hover {
+  background-color: #1d8aa5;
+}
+
+.button--disabled {
+  background-color: #bdbdbd;
+  color: black;
+  cursor: not-allowed;
+}

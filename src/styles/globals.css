@@ -18,6 +18,4 @@ a {
   text-decoration: none;
 }
 
-@import 'not-found.css';
-@import 'layout.css';
-@import 'header.css';
+@import 'styles';

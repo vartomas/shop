@@ -1,11 +1,10 @@
 .not-found-container {
   max-width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  color: rgb(58, 9, 9);
+  color: #f7b801;
   font-weight: 700;
   font-size: 40px;
+  margin-top: 256px;
 }

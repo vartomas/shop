@@ -6,5 +6,5 @@
   "printWidth": 120,
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
-  "importOrder": ["^(react)", "^(next)", "^(@supabase)", "<THIRD_PARTY_MODULES>", "^(@/)", "^(./)", "^(../)"]
+  "importOrder": ["^(react)$", "^(next)", "^(@supabase)", "<THIRD_PARTY_MODULES>", "^(@/)", "^(./)", "^(../)"]
 }

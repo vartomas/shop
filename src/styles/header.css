@@ -1,6 +1,6 @@
 .header {
   padding: 16px;
-  background-color: lightgray;
+  background-color: #f7b801;
 
   display: flex;
   justify-content: space-between;
@@ -26,5 +26,5 @@
 }
 
 .header__user__icon:hover {
-  color: darkslategray;
+  color: #f35b04;
 }

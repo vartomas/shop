@@ -1,0 +1,20 @@
+.text-input {
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.text-input__label {
+  font-weight: 700;
+}
+
+.text-input__input {
+  width: 100%;
+  outline: none;
+  padding: 4px;
+}
+
+.text-input__error {
+  font-size: 12px;
+  padding: 0;
+  color: red;
+}
