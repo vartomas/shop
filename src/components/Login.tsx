@@ -98,7 +98,7 @@ const Login = () => {
           <TextInput name="repeatPassword" label="Repeat password" type="password" form={signUpForm} />
           <p>{error}</p>
           <div className="login__button-container">
-            <Button title="Log in" type="submit" disabled={loading} onClick={submitSignUp} />
+            <Button title="Sign up" type="submit" disabled={loading} onClick={submitSignUp} />
           </div>
           <p className="login__helper-text">
             Already have account?{' '}
