@@ -14,7 +14,10 @@ const signInSchema = yup.object().shape({
 const signUpSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email required'),
   password: yup.string().min(6, 'Minimum 6 characters').required('Password required'),
-  repeatPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match'),
+  repeatPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords must match')
+    .required('Please repeat the password'),
 });
 
 type SignInForm = yup.InferType<typeof signInSchema>;
@@ -67,16 +70,17 @@ const Login = () => {
     <>
       {loginView ? (
         <form onSubmit={submitSignIn}>
-          <h2>Sign in</h2>
+          <h2 className="login__header">Sign in</h2>
           <TextInput name="email" label="Email" type="email" form={signInForm} />
           <TextInput name="password" label="Password" type="password" form={signInForm} />
           <p>{error}</p>
-          <div>
+          <div className="login__button-container">
             <Button title="Log in" type="submit" disabled={loading} onClick={submitSignIn} />
           </div>
-          <p>
+          <p className="login__helper-text">
             Dont have account?{' '}
             <span
+              className="login__helper-text__link"
               onClick={() => {
                 setLoginView(false);
                 setError('');
@@ -88,17 +92,18 @@ const Login = () => {
         </form>
       ) : (
         <form onSubmit={submitSignUp}>
-          <h2>Sign up</h2>
+          <h2 className="login__header">Sign up</h2>
           <TextInput name="email" label="Email" type="email" form={signUpForm} />
           <TextInput name="password" label="Password" type="password" form={signUpForm} />
           <TextInput name="repeatPassword" label="Repeat password" type="password" form={signUpForm} />
           <p>{error}</p>
-          <div>
+          <div className="login__button-container">
             <Button title="Log in" type="submit" disabled={loading} onClick={submitSignUp} />
           </div>
-          <p>
+          <p className="login__helper-text">
             Already have account?{' '}
             <span
+              className="login__helper-text__link"
               onClick={() => {
                 setLoginView(true);
                 setError('');
