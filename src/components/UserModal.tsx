@@ -26,7 +26,7 @@ const UserModal: FC<Props> = ({ open, onClose }) => {
         <div className="user-modal__close-btn">
           <IconButton Icon={MdClose} onClick={onClose} />
         </div>
-        {user ? <Profile /> : <Login />}
+        {user ? <Profile user={user} /> : <Login />}
       </div>
     </div>
   );

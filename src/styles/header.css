@@ -28,3 +28,6 @@
 .header__user__icon:hover {
   color: #f35b04;
 }
+.header__user__logout {
+  margin-left: 16px;
+}
