@@ -9,9 +9,9 @@ interface Props {
 }
 
 const Profile: FC<Props> = ({ user }) => {
-  const { profileForm, fetching, submit } = useProfile(user.id);
+  const { profileForm, loading, submit } = useProfile(user.id);
 
-  if (fetching) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div>

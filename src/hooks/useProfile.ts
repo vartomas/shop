@@ -16,11 +16,7 @@ export interface ProfileForm {
 export const useProfile = (userId: string) => {
   const supabaseClient = useSupabaseClient();
 
-  const { data, loading: fetching } = useGet<[Database['public']['Tables']['profiles']['Row']]>(
-    'profiles',
-    'id',
-    userId
-  );
+  const { data, loading } = useGet<[Database['public']['Tables']['profiles']['Row']]>('profiles', 'id', userId);
 
   const profileForm = useForm<ProfileForm>({
     mode: 'onSubmit',
@@ -54,7 +50,7 @@ export const useProfile = (userId: string) => {
 
   return {
     profileForm,
-    fetching,
+    loading,
     submit,
   };
 };

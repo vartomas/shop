@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import Avatar from './Avatar';
 import Button from './Button';
 import UserModal from './UserModal';
 
@@ -18,7 +19,11 @@ const Header = () => {
 
       <div className="header__user">
         <p className="header__user__email">{user?.email}</p>
-        <HiOutlineUserCircle className="header__user__icon" onClick={() => setUserModalOpen(true)} />
+        {user ? (
+          <Avatar email={user.email || 'N'} onClick={() => setUserModalOpen(true)} />
+        ) : (
+          <HiOutlineUserCircle className="header__user__icon" onClick={() => setUserModalOpen(true)} />
+        )}
         {user && (
           <div className="header__user__logout">
             <Button title="Log out" onClick={handleLogOut} />
