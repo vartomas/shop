@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useForm } from 'react-hook-form';
 import { Database } from '@/types/supabase';
-import { useGet } from './useGet';
+import { useGetSingle } from './useGetSingle';
 
 export interface ProfileForm {
   firstname: string;
@@ -16,7 +16,7 @@ export interface ProfileForm {
 export const useProfile = (userId: string) => {
   const supabaseClient = useSupabaseClient();
 
-  const { data, loading } = useGet<[Database['public']['Tables']['profiles']['Row']]>('profiles', 'id', userId);
+  const { data, loading } = useGetSingle<Database['public']['Tables']['profiles']['Row']>('profiles', 'id', userId);
 
   const profileForm = useForm<ProfileForm>({
     mode: 'onSubmit',
@@ -32,7 +32,7 @@ export const useProfile = (userId: string) => {
 
   useEffect(() => {
     if (data) {
-      const profile = data[0];
+      const profile = data;
       profileForm.reset({
         firstname: profile.firstname || '',
         lastname: profile.lastname || '',
