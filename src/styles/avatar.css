@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.avatar__bubble:hover {
+  background-color: #1d8aa5;
+}
+
 .avatar__bubble__letter {
   font-size: 16px;
   color: white;
