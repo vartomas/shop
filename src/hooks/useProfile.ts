@@ -48,7 +48,7 @@ export const useProfile = (userId: string) => {
 
   const submit = profileForm.handleSubmit(async (formValues: ProfileForm) => {
     await supabaseClient.from('profiles').update(formValues).eq('id', userId);
-    toast('success', 'Profile updated', 2);
+    toast({ type: 'success', message: 'Profile updated', time: 2 });
   });
 
   return {
