@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { Session, SessionContextProvider } from '@supabase/auth-helpers-react';
 import Layout from '@/components/Layout';
+import { ToastProvider } from '@/hooks/useToast';
 import '@/styles/globals.css';
 import { Database } from '@/types/supabase';
 
@@ -16,9 +17,11 @@ const App = ({
 
   return (
     <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ToastProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ToastProvider>
     </SessionContextProvider>
   );
 };

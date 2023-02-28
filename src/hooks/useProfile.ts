@@ -3,6 +3,7 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useForm } from 'react-hook-form';
 import { Database } from '@/types/supabase';
 import { useGetSingle } from './useGetSingle';
+import { useToast } from './useToast';
 
 export interface ProfileForm {
   firstname: string;
@@ -15,6 +16,7 @@ export interface ProfileForm {
 
 export const useProfile = (userId: string) => {
   const supabaseClient = useSupabaseClient();
+  const { toast } = useToast();
 
   const { data, loading } = useGetSingle<Database['public']['Tables']['profiles']['Row']>('profiles', 'id', userId);
 
@@ -46,6 +48,7 @@ export const useProfile = (userId: string) => {
 
   const submit = profileForm.handleSubmit(async (formValues: ProfileForm) => {
     await supabaseClient.from('profiles').update(formValues).eq('id', userId);
+    toast('success', 'Profile updated', 2);
   });
 
   return {

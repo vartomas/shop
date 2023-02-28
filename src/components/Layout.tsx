@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 import Header from './Header';
+import Toasts from './Toasts';
 
 interface Props {
   children: ReactNode;
@@ -15,6 +16,7 @@ const Layout: FC<Props> = ({ children }) => {
       </Head>
       <Header />
       {children}
+      <Toasts />
     </div>
   );
 };
