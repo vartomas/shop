@@ -5,15 +5,19 @@ import IconButton from './IconButton';
 
 const Toasts = () => {
   const context = useContext(toastContext);
-  const { removeToast } = useToast();
+  const { closeToast } = useToast();
 
   return (
     <div className="toasts-container">
       {context?.toasts.map((x) => (
-        <div className={`toasts-container__toast toasts-container__toast--${x.type}`} key={x.id}>
-          <p className="toast-container__toast__message">{x.message}</p>
+        <div
+          className={`toasts-container__toast toasts-container__toast--${x.type}`}
+          style={{ animation: `toasts-container__toast--slideInOut ${x.time}s` }}
+          key={x.id}
+        >
+          <p>{x.message}</p>
           <div className="toasts-container__toast__close-btn">
-            <IconButton Icon={MdClose} onClick={() => removeToast(x.id)} />
+            <IconButton Icon={MdClose} onClick={() => closeToast(x.id)} />
           </div>
         </div>
       ))}

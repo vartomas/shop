@@ -2,17 +2,27 @@
   position: fixed;
   right: 0;
   bottom: 0;
+  z-index: 100;
 }
 
 .toasts-container__toast {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 8px;
-  padding: 16px 4px 16px 16px;
+  padding: 16px;
   width: 250px;
   border-radius: 4px;
   position: relative;
+  transform: translateX(250px);
+}
+
+@keyframes toasts-container__toast--slideInOut {
+  0%,
+  100% {
+    transform: translateX(250px);
+  }
+  5%,
+  95% {
+    transform: translateY(0px);
+  }
 }
 
 .toasts-container__toast--error {
@@ -28,10 +38,6 @@
 .toasts-container__toast--success {
   background-color: #0ead69;
   color: white;
-}
-
-.toasts-container__toast__message {
-  margin-right: 16px;
 }
 
 .toasts-container__toast__close-btn {
