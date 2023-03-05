@@ -5,6 +5,12 @@ interface UserSchema {
   email: string;
   password: string;
   tokens: { token: string }[];
+  firstname: string;
+  lastname: string;
+  adress: string;
+  city: string;
+  country: string;
+  phonenumber: string;
 }
 
 const userSchema = new Schema<UserSchema>({
@@ -19,6 +25,12 @@ const userSchema = new Schema<UserSchema>({
     min: [6, 'Min 6 chars password'],
   },
   tokens: [{ token: String }],
+  firstname: String,
+  lastname: String,
+  adress: String,
+  city: String,
+  country: String,
+  phonenumber: String,
 });
 
 userSchema.pre('save', function (next) {

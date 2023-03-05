@@ -16,7 +16,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res
       .status(200)
       .setHeader('Set-Cookie', serialize('token', token, { path: '/' }))
-      .json({ success: true });
+      .json({
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        adress: user.adress,
+        city: user.city,
+        coutnry: user.country,
+        phonenumber: user.phonenumber,
+      });
   }
 };
 

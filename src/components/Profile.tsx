@@ -1,17 +1,9 @@
-import { FC } from 'react';
-import { User } from '@supabase/supabase-js';
 import { useProfile } from '@/hooks/useProfile';
 import Button from './Button';
 import TextInput from './TextInput';
 
-interface Props {
-  user: User;
-}
-
-const Profile: FC<Props> = ({ user }) => {
-  const { profileForm, loading, submit } = useProfile(user.id);
-
-  if (loading) return <p>Loading...</p>;
+const Profile = () => {
+  const { profileForm, submit } = useProfile();
 
   return (
     <div>

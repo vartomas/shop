@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     try {
       const user = await User.findOne({ email: req.body.email });
-      if (!user) return res.status(401).json({ success: false, message: 'Wrong username or password' });
+      if (!user) return res.status(401).send(null);
       const confirm = await bcrypt.compare(req.body.password, user.password);
       if (confirm) {
         const token = generateToken(user._id);
@@ -20,10 +20,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .status(200)
           .setHeader('Set-Cookie', serialize('token', token, { path: '/' }))
           .json({
-            success: true,
             email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            adress: user.adress,
+            city: user.city,
+            coutnry: user.country,
+            phonenumber: user.phonenumber,
           });
-      } else res.status(401).json({ success: false, message: 'Wrong username or password' });
+      } else res.status(401).send(null);
     } catch (error) {
       res.status(401).json(error);
     }

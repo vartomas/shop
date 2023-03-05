@@ -1,53 +1,40 @@
 import { useEffect } from 'react';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useForm } from 'react-hook-form';
-import { Database } from '@/types/supabase';
-import { useGetSingle } from './useGetSingle';
-import { useToast } from './useToast';
+import { useToast } from '@/store/useToast';
+import { useUser } from '@/store/useUser';
+import { UserProfile } from '@/types/userModel';
 
-export interface ProfileForm {
-  firstname: string;
-  lastname: string;
-  adress: string;
-  city: string;
-  country: string;
-  phonenumber: string;
-}
-
-export const useProfile = (userId: string) => {
-  const supabaseClient = useSupabaseClient();
+export const useProfile = () => {
   const { toast } = useToast();
+  const { currentUser, loading, updateUser } = useUser();
 
-  const { data, loading } = useGetSingle<Database['public']['Tables']['profiles']['Row']>('profiles', 'id', userId);
-
-  const profileForm = useForm<ProfileForm>({
+  const profileForm = useForm<UserProfile>({
     mode: 'onSubmit',
     defaultValues: {
-      firstname: '',
-      lastname: '',
-      adress: '',
-      city: '',
-      country: '',
-      phonenumber: '',
+      firstname: currentUser?.firstname || '',
+      lastname: currentUser?.lastname || '',
+      adress: currentUser?.adress || '',
+      city: currentUser?.city || '',
+      country: currentUser?.country || '',
+      phonenumber: currentUser?.phonenumber || '',
     },
   });
 
   useEffect(() => {
-    if (data) {
-      const profile = data;
+    if (currentUser) {
       profileForm.reset({
-        firstname: profile.firstname || '',
-        lastname: profile.lastname || '',
-        adress: profile.adress || '',
-        city: profile.city || '',
-        country: profile.country || '',
-        phonenumber: profile.phonenumber || '',
+        firstname: currentUser?.firstname || '',
+        lastname: currentUser?.lastname || '',
+        adress: currentUser?.adress || '',
+        city: currentUser?.city || '',
+        country: currentUser?.country || '',
+        phonenumber: currentUser?.phonenumber || '',
       });
     }
-  }, [data, profileForm]);
+  }, [currentUser, profileForm]);
 
-  const submit = profileForm.handleSubmit(async (formValues: ProfileForm) => {
-    await supabaseClient.from('profiles').update(formValues).eq('id', userId);
+  const submit = profileForm.handleSubmit(async (formValues) => {
+    await updateUser(formValues);
     toast({ type: 'success', message: 'Profile updated' });
   });
 

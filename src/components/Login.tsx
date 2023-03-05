@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { useUser } from '@/store/useUser';
 import Button from './Button';
 import TextInput from './TextInput';
 
@@ -25,10 +25,8 @@ type SignUpForm = yup.InferType<typeof signUpSchema>;
 
 const Login = () => {
   const [loginView, setLoginView] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  const supabaseClient = useSupabaseClient();
+  const { loading, signUp, login } = useUser();
 
   const signInForm = useForm<SignInForm>({
     mode: 'onSubmit',
@@ -42,29 +40,10 @@ const Login = () => {
     resolver: yupResolver(signUpSchema),
   });
 
-  const submitSignIn = signInForm.handleSubmit(async (formValues: SignInForm) => {
-    setError('');
-    setLoading(true);
-    const response = await supabaseClient.auth.signInWithPassword(formValues);
-
-    if (response.error?.message) {
-      setError(response.error.message);
-    }
-
-    setLoading(false);
+  const submitSignIn = signInForm.handleSubmit((formValues) => {
+    login(formValues.email, formValues.password);
   });
-
-  const submitSignUp = signUpForm.handleSubmit(async (formValues: SignUpForm) => {
-    setError('');
-    setLoading(true);
-    const response = await supabaseClient.auth.signUp(formValues);
-
-    if (response.error?.message) {
-      setError(response.error.message);
-    }
-
-    setLoading(false);
-  });
+  const submitSignUp = signUpForm.handleSubmit((formValues) => signUp(formValues.email, formValues.password));
 
   return (
     <>

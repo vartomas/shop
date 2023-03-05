@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 import { MdClose } from 'react-icons/md';
+import { useUser } from '@/store/useUser';
 import IconButton from './IconButton';
 import Login from './Login';
 import Profile from './Profile';
@@ -11,12 +11,11 @@ interface Props {
 }
 
 const UserModal: FC<Props> = ({ open, onClose }) => {
-  const user = useUser();
-  const supabaseClient = useSupabaseClient();
+  const { currentUser } = useUser();
 
   useEffect(() => {
-    supabaseClient.auth.onAuthStateChange(() => onClose());
-  }, []);
+    onClose();
+  }, [currentUser]);
 
   if (!open) return null;
 
@@ -26,7 +25,7 @@ const UserModal: FC<Props> = ({ open, onClose }) => {
         <div className="user-modal__close-btn">
           <IconButton Icon={MdClose} onClick={onClose} />
         </div>
-        {user ? <Profile user={user} /> : <Login />}
+        {currentUser ? <Profile /> : <Login />}
       </div>
     </div>
   );
