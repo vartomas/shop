@@ -27,6 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             city: user.city,
             coutnry: user.country,
             phonenumber: user.phonenumber,
+            admin: user.admin,
           });
       } else res.status(401).send(null);
     } catch (error) {

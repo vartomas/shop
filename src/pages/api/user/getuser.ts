@@ -16,6 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       city: user.city,
       coutnry: user.country,
       phonenumber: user.phonenumber,
+      admin: user.admin,
     });
   }
 };

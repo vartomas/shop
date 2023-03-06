@@ -11,6 +11,7 @@ interface UserSchema {
   city: string;
   country: string;
   phonenumber: string;
+  admin: boolean;
 }
 
 const userSchema = new Schema<UserSchema>({
@@ -31,6 +32,7 @@ const userSchema = new Schema<UserSchema>({
   city: String,
   country: String,
   phonenumber: String,
+  admin: Boolean,
 });
 
 userSchema.pre('save', function (next) {

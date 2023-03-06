@@ -1,24 +1,36 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { User } from '@/models/user';
 import { getAuthUser } from '@/utils/auth';
 import { connect } from '@/utils/mongodb';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await connect();
-  const catcher = (error: Error) => res.status(400).json({ error });
   if (req.method === 'POST') {
     const token = req.cookies.token;
     const user = await getAuthUser(token);
     if (!user) return res.status(401).send(null);
-    await user.updateOne(req.body).catch(catcher);
-    res.status(200).json({
-      email: user.email,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      adress: user.adress,
-      city: user.city,
-      coutnry: user.country,
-      phonenumber: user.phonenumber,
-    });
+    try {
+      const updated = await User.findOneAndUpdate(
+        { _id: user._id, email: user.email },
+        { ...req.body, admin: user.admin, email: user.email },
+        { new: true }
+      );
+
+      if (!updated) return res.status(400).send(null);
+
+      res.status(200).json({
+        email: updated.email,
+        firstname: updated.firstname,
+        lastname: updated.lastname,
+        adress: updated.adress,
+        city: updated.city,
+        coutnry: updated.country,
+        phonenumber: updated.phonenumber,
+        admin: user.admin,
+      });
+    } catch (error) {
+      res.status(400).send(null);
+    }
   }
 };
 
