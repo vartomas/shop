@@ -6,4 +6,5 @@ export interface UserProfile {
   city: string | undefined;
   country: string | undefined;
   phonenumber: string | undefined;
+  admin: boolean | undefined;
 }

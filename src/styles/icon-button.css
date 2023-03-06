@@ -1,6 +1,4 @@
 .icon-button {
-  width: 24px;
-  height: 24px;
   cursor: pointer;
 
   display: flex;
@@ -9,15 +7,33 @@
 }
 
 .icon-button__bubble {
-  width: 20px;
-  height: 20px;
   background-color: rgb(0, 0, 0, 0);
   transition: background-color 0.2s ease-in-out;
-  border-radius: 10px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon-button__bubble--small {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.icon-button__bubble--normal {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 25px;
+}
+
+.icon-button__bubble--large {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 35px;
 }
 
 .icon-button__bubble:hover {

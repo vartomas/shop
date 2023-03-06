@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import { MdSettings } from 'react-icons/md';
 import { useUser } from '@/store/useUser';
 import Avatar from './Avatar';
 import Button from './Button';
+import IconButton from './IconButton';
 import UserModal from './UserModal';
 
 const Header = () => {
@@ -11,7 +14,9 @@ const Header = () => {
 
   return (
     <div className="header">
-      <h1>Shop</h1>
+      <Link href="/">
+        <h1>Shop</h1>
+      </Link>
 
       <div className="header__user">
         <p className="header__user__email">{currentUser?.email}</p>
@@ -19,6 +24,13 @@ const Header = () => {
           <Avatar email={currentUser.email || 'N'} onClick={() => setUserModalOpen(true)} />
         ) : (
           <HiOutlineUserCircle className="header__user__icon" onClick={() => setUserModalOpen(true)} />
+        )}
+        {currentUser?.admin && (
+          <div className="header__user__admin-icon">
+            <Link href="/admin">
+              <IconButton Icon={MdSettings} />
+            </Link>
+          </div>
         )}
         {currentUser && (
           <div className="header__user__logout">

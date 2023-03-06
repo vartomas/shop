@@ -23,7 +23,7 @@ const UserModal: FC<Props> = ({ open, onClose }) => {
     <div className="user-modal-overlay">
       <div className="user-modal">
         <div className="user-modal__close-btn">
-          <IconButton Icon={MdClose} onClick={onClose} />
+          <IconButton size="small" Icon={MdClose} onClick={onClose} />
         </div>
         {currentUser ? <Profile /> : <Login />}
       </div>

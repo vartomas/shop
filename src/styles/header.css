@@ -31,3 +31,8 @@
 .header__user__logout {
   margin-left: 16px;
 }
+
+.header__user__admin-icon {
+  margin-left: 8px;
+  color: #219ebc;
+}
