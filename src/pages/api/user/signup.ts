@@ -6,10 +6,10 @@ import { connect } from '@/utils/mongodb';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await connect();
-  const catcher = (error: Error) => res.status(400).json({ error });
+  const catcher = () => res.status(400).send(null);
   if (req.method === 'POST') {
     const user = await User.create(req.body).catch(catcher);
-    if (!user) return;
+    if (!user) return res.status(400).send(null);
     const token = generateToken(user._id);
     user.tokens.push({ token });
     await user.save();
