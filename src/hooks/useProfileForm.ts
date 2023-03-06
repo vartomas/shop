@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useUser } from '@/store/useUser';
 import { UserProfile } from '@/types/userModel';
 
-export const useProfile = () => {
+export const useProfileForm = () => {
   const { currentUser, loading, updateUser } = useUser();
 
   const profileForm = useForm<UserProfile>({

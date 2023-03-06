@@ -1,9 +1,9 @@
-import { useProfile } from '@/hooks/useProfile';
+import { useProfileForm } from '@/hooks/useProfileForm';
 import Button from './Button';
 import TextInput from './TextInput';
 
 const Profile = () => {
-  const { profileForm, submit } = useProfile();
+  const { profileForm, submit } = useProfileForm();
 
   return (
     <div>
