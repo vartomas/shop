@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!user) return res.status(401).send(null);
     try {
       const updated = await User.findOneAndUpdate(
-        { _id: user._id, email: user.email },
+        { _id: user._id },
         { ...req.body, admin: user.admin, email: user.email },
         { new: true }
       );
