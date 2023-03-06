@@ -9,13 +9,7 @@ const createParamsString = (params: Record<string, string> | undefined) =>
     .join('&')}`;
 
 export const api = {
-  get: async <T>({
-    url,
-    params,
-  }: {
-    url: string;
-    params?: Record<string, string> | undefined;
-  }): Promise<{ data: T | null; error: unknown }> => {
+  get: async <T>({ url, params }: { url: string; params?: Record<string, string> | undefined }) => {
     try {
       const response = await fetch(baseUrl + url + (params ? createParamsString(params) : ''), {
         method: 'GET',
