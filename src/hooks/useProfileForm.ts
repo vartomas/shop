@@ -4,7 +4,7 @@ import { useUser } from '@/store/useUser';
 import { UserProfile } from '@/types/userModel';
 
 export const useProfileForm = () => {
-  const { currentUser, loading, updateUser } = useUser();
+  const { currentUser, updateUser } = useUser();
 
   const profileForm = useForm<UserProfile>({
     mode: 'onSubmit',
@@ -37,7 +37,6 @@ export const useProfileForm = () => {
 
   return {
     profileForm,
-    loading,
     submit,
   };
 };
