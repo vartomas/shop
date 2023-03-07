@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             lastname: user.lastname,
             adress: user.adress,
             city: user.city,
-            coutnry: user.country,
+            country: user.country,
             phonenumber: user.phonenumber,
             admin: user.admin,
           });
