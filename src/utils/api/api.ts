@@ -1,6 +1,7 @@
 import { RequestParams } from '@/types/apiModel';
 
-export const baseUrl = 'api/';
+export const baseUrl =
+  process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/' : 'https://shop-vartomas.vercel.app/api/';
 
 const createParamsString = (params: Record<string, string> | undefined) =>
   params &&
@@ -26,10 +27,12 @@ export const api = {
     try {
       const response = await fetch(baseUrl + props.url + (props.params ? createParamsString(props.params) : ''), {
         method: props.method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(props.body),
+        headers: props.formData
+          ? undefined
+          : {
+              'Content-Type': 'application/json',
+            },
+        body: props.formData ? props.body : JSON.stringify(props.body),
       });
       return { data: (await response.json()) as T, error: null };
     } catch (error) {

@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 .avatar {
   width: 36px;
   height: 36px;
@@ -11,7 +13,7 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  background-color: #219ebc;
+  background-color: var(--secondary-color);
   cursor: pointer;
 
   display: flex;
@@ -20,7 +22,7 @@
 }
 
 .avatar__bubble:hover {
-  background-color: #1d8aa5;
+  background-color: var(--secondary-color-hover);
 }
 
 .avatar__bubble__letter {

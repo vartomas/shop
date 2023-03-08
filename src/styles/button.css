@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 .button {
   border: none;
   padding: 6px 12px;
@@ -8,13 +10,13 @@
 }
 
 .button--enabled {
-  background-color: #219ebc;
+  background-color: var(--secondary-color);
   color: white;
   cursor: pointer;
 }
 
 .button--enabled:hover {
-  background-color: #1d8aa5;
+  background-color: var(--secondary-color-hover);
 }
 
 .button--disabled {

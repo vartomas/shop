@@ -1,10 +1,16 @@
+@import 'variables.css';
+
 .header {
-  padding: 16px;
-  background-color: #f7b801;
+  padding: 8px;
+  background-color: var(--primary-color);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__logo {
+  color: white;
 }
 
 .header__user {
@@ -16,6 +22,7 @@
 .header__user__email {
   font-size: 14px;
   margin-right: 16px;
+  color: white;
 }
 
 .header__user__icon {
@@ -26,7 +33,7 @@
 }
 
 .header__user__icon:hover {
-  color: #f35b04;
+  color: var(--primary-color-hover);
 }
 .header__user__logout {
   margin-left: 16px;
@@ -34,5 +41,5 @@
 
 .header__user__admin-icon {
   margin-left: 8px;
-  color: #219ebc;
+  color: var(--secondary-color);
 }

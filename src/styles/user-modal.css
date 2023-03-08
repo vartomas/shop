@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 .user-modal-overlay {
   position: fixed;
   width: 100%;
@@ -18,7 +20,7 @@
   width: 300px;
   z-index: 60;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: #f7b801;
+  background-color: var(--primary-color);
   padding: 16px;
   border-radius: 4px;
   position: relative;

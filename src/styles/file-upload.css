@@ -1,0 +1,38 @@
+@import 'variables.css';
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.file-upload__button {
+  background-color: var(--primary-color);
+  padding: 6px 12px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+}
+
+.file-upload__button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.file-upload__button__icon {
+  font-size: 20px;
+  margin-right: 4px;
+
+  display: flex;
+  align-items: center;
+}
+
+.file-upload__error {
+  font-size: 12px;
+  padding: 0;
+  color: red;
+  text-align: center;
+}

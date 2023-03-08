@@ -5,7 +5,7 @@ interface Props {
   title: string;
   disabled?: boolean;
   type?: 'submit';
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: FC<Props> = ({ title, disabled, type, onClick }) => {

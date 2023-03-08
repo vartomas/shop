@@ -17,7 +17,12 @@ const TextInput: FC<Props> = ({ name, label, form, type }) => {
   return (
     <div className="text-input">
       <p className="text-input__label">{label}</p>
-      <input className="text-input__input" type={type} {...register(name)} />
+      <input
+        className="text-input__input"
+        type={type}
+        step={type === 'number' ? '.01' : undefined}
+        {...register(name)}
+      />
       <p className="text-input__error">{errors[name]?.message as string}</p>
     </div>
   );

@@ -15,7 +15,7 @@ const Profile = () => {
         <TextInput name="country" label="Country" form={profileForm} />
         <TextInput name="phonenumber" label="Phone number" form={profileForm} />
         <div className="profile__submit-button-container">
-          <Button type="submit" title="Save" disabled={profileForm.formState.isSubmitting} onClick={submit} />
+          <Button type="submit" title="Save" disabled={profileForm.formState.isSubmitting} />
         </div>
       </form>
     </div>
