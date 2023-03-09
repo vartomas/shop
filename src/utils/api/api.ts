@@ -1,7 +1,7 @@
 import { RequestParams } from '@/types/apiModel';
 
 export const baseUrl =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/' : 'https://shop-vartomas.vercel.app/api/';
+  process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api/' : 'https://localghost.lt/api/';
 
 const createParamsString = (params: Record<string, string> | undefined) =>
   params &&
