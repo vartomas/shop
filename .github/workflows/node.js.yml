@@ -21,11 +21,11 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo pm2 stop shop
+            pm2 stop shop
             cd ~/shop/
             git pull
             npm prune
             npm install
             npm run build
-            sudo pm2 start shop
+            pm2 start shop
             sudo systemctl restart nginx
