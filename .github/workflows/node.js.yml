@@ -27,6 +27,5 @@ jobs:
             npm prune
             npm install
             npm run build
-            npm run start
             sudo pm2 start shop
             sudo systemctl restart nginx
