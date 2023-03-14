@@ -1,5 +1,8 @@
+@import 'variables.css';
+
 .admin-products {
   padding: 8px;
+  color: var(--primary-color);
 }
 
 .admin-products__users-button {
