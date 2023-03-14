@@ -30,7 +30,7 @@ const ProductList: FC<Props> = ({ products, onSelectForEdit, onSelectForDelete }
           <div className="products__list__item" key={x._id}>
             <span title={x.title}>{x.title}</span>
             <span title={x.description}>{x.description}</span>
-            <span title={(x.price / 100).toString()}>{x.price / 100}</span>
+            <span title={(parseInt(x.price) / 100).toString()}>{parseInt(x.price) / 100}</span>
             <span title={x.image}>{x.image}</span>
             <span title={x._id}>{x._id}</span>
             <span className="products__list__item__buttons">
