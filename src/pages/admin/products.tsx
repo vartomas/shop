@@ -6,6 +6,7 @@ import CreateProductModal from '@/components/CreateProductModal';
 import DeleteProductModal from '@/components/DeleteProductModal';
 import Divider from '@/components/Divider';
 import ProductList from '@/components/ProductList';
+import UpdateProductModal from '@/components/UpdateProductModal';
 import { Product } from '@/models/product';
 import { useToast } from '@/store/useToast';
 import { ProductDto } from '@/types/productModel';
@@ -78,6 +79,10 @@ const Admin: FC<Props> = ({ isAdmin, products }) => {
       )}
 
       {createModalOpen && <CreateProductModal onClose={() => setCreateModalOpen(false)} />}
+
+      {editProductId && (
+        <UpdateProductModal product={products.find((x) => x._id === editProductId)!} onClose={onCloseModal} />
+      )}
     </div>
   );
 };
