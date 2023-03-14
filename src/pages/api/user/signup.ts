@@ -11,11 +11,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const user = await User.create(req.body).catch(catcher);
     if (!user) return res.status(400).send(null);
     const token = generateToken(user._id);
-    user.tokens.push({ token });
+    user.tokens.push({ token, createdAt: new Date().getTime() });
     await user.save();
     res
       .status(200)
-      .setHeader('Set-Cookie', serialize('token', token, { path: '/' }))
+      .setHeader('Set-Cookie', serialize('token', token, { path: '/', maxAge: 60 * 60 * 24 * 365 })) // cookie valid for 365 days
       .json({
         email: user.email,
         firstname: user.firstname,

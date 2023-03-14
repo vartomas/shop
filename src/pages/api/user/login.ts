@@ -14,11 +14,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const confirm = await bcrypt.compare(req.body.password, user.password);
       if (confirm) {
         const token = generateToken(user._id);
-        user.tokens.push({ token });
+        user.tokens.push({ token, createdAt: new Date().getTime() });
         await user.save();
         res
           .status(200)
-          .setHeader('Set-Cookie', serialize('token', token, { path: '/' }))
+          .setHeader('Set-Cookie', serialize('token', token, { path: '/', maxAge: 60 * 60 * 24 * 365 }))
           .json({
             email: user.email,
             firstname: user.firstname,

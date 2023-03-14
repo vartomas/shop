@@ -4,7 +4,7 @@ import mongoose, { Model, Schema, models } from 'mongoose';
 interface UserSchema {
   email: string;
   password: string;
-  tokens: { token: string }[];
+  tokens: { token: string; createdAt: number }[];
   firstname: string;
   lastname: string;
   adress: string;

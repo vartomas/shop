@@ -20,7 +20,7 @@ interface Props {
   products: ProductDto[];
 }
 
-const Admin: FC<Props> = ({ isAdmin, products }) => {
+const Products: FC<Props> = ({ isAdmin, products }) => {
   const [editProductId, setEditProductId] = useState<string>();
   const [deleteProductId, setDeleteProductId] = useState<string>();
   const [createModalOpen, setCreateModalOpen] = useState(false);
@@ -113,4 +113,4 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-export default Admin;
+export default Products;
