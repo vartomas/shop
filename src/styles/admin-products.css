@@ -25,7 +25,7 @@
 
 .delete-modal-content__buttons {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .delete-modal-content__buttons__cancel {
