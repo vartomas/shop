@@ -61,9 +61,7 @@ export const useUser = create<UserState>((set) => ({
     set(() => ({ loading: true }));
     const { data: user, error } = await updateUser(profile);
     if (user) {
-      set((state) => ({
-        currentUser: { ...profile, email: state.currentUser?.email ? state.currentUser?.email : '' },
-      }));
+      set(() => ({ currentUser: user }));
       toast({ type: 'success', message: 'Profile updated' });
     }
 
