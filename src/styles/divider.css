@@ -1,0 +1,7 @@
+@import 'variables.css';
+
+.divider {
+  height: 1px;
+  margin: 8px 0;
+  background-color: var(--primary-color);
+}

@@ -61,7 +61,7 @@ export const useCreateProduct = () => {
     const response = await createProduct(formData);
 
     if (!response.error) {
-      router.push('/admin/');
+      router.push('/admin/products');
       toast({ type: 'success', message: 'Product created' });
     } else {
       toast({ type: 'error', message: 'Failed to create product' });

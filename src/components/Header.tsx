@@ -27,7 +27,7 @@ const Header = () => {
         )}
         {currentUser?.admin && (
           <div className="header__user__admin-icon">
-            <Link href="/admin">
+            <Link href="/admin/products">
               <IconButton Icon={MdSettings} />
             </Link>
           </div>

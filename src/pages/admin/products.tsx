@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import Button from '@/components/Button';
+import Divider from '@/components/Divider';
+import ProductList from '@/components/ProductList';
 import { Product } from '@/models/product';
 import { ProductDto } from '@/types/productModel';
 import { getAuthUser } from '@/utils/auth';
@@ -16,17 +18,16 @@ const Admin: FC<Props> = ({ isAdmin, products }) => {
   if (!isAdmin) return <Custom404Page />;
 
   return (
-    <>
-      <p>Admin panel</p>
-      <Link href="admin/createproduct">
+    <div className="admin-products">
+      <Link href="createproduct">
         <Button title="Create product" />
       </Link>
-      {products.map((x) => (
-        <div key={x._id}>
-          {x.title} {x.description} {x.price}
-        </div>
-      ))}
-    </>
+      <Link className="admin-products__users-button" href="users">
+        <Button title="Manage users" />
+      </Link>
+      <Divider />
+      <ProductList products={products} />
+    </div>
   );
 };
 
