@@ -2,8 +2,9 @@ import { FC, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Button from '@/components/Button';
+import CreateProductModal from '@/components/CreateProductModal';
+import DeleteProductModal from '@/components/DeleteProductModal';
 import Divider from '@/components/Divider';
-import Modal from '@/components/Modal';
 import ProductList from '@/components/ProductList';
 import { Product } from '@/models/product';
 import { useToast } from '@/store/useToast';
@@ -21,6 +22,8 @@ interface Props {
 const Admin: FC<Props> = ({ isAdmin, products }) => {
   const [editProductId, setEditProductId] = useState<string>();
   const [deleteProductId, setDeleteProductId] = useState<string>();
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+
   const { toast } = useToast();
   const router = useRouter();
 
@@ -58,9 +61,7 @@ const Admin: FC<Props> = ({ isAdmin, products }) => {
 
   return (
     <div className="admin-products">
-      <Link href="createproduct">
-        <Button title="Create product" />
-      </Link>
+      <Button title="Create product" onClick={() => setCreateModalOpen(true)} />
       <Link className="admin-products__users-button" href="users">
         <Button title="Manage users" />
       </Link>
@@ -68,24 +69,15 @@ const Admin: FC<Props> = ({ isAdmin, products }) => {
       <ProductList products={products} onSelectForEdit={selectForEdit} onSelectForDelete={selectForDelete} />
 
       {modalOpen && (
-        <Modal onClose={onCloseModal}>
-          {!!deleteProductId && (
-            <div className="delete-modal-content">
-              <p className="delete-modal-content__header">Delete product?</p>
-              <p className="delete-modal-content__title">
-                Title: {products.find((x) => x._id === deleteProductId)?.title}
-              </p>
-              <p className="delete-modal-content__id">Id: {products.find((x) => x._id === deleteProductId)?._id}</p>
-              <div className="delete-modal-content__buttons">
-                <div className="delete-modal-content__buttons__cancel">
-                  <Button title="Cancel" onClick={onCloseModal} />
-                </div>
-                <Button title="Delete" onClick={handleDelete} />
-              </div>
-            </div>
-          )}
-        </Modal>
+        <DeleteProductModal
+          deleteProductId={deleteProductId}
+          products={products}
+          onDelete={handleDelete}
+          onClose={onCloseModal}
+        />
       )}
+
+      {createModalOpen && <CreateProductModal onClose={() => setCreateModalOpen(false)} />}
     </div>
   );
 };

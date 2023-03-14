@@ -39,7 +39,7 @@ const productSchema = yup.object().shape({
 
 type ProductForm = yup.InferType<typeof productSchema>;
 
-export const useCreateProduct = () => {
+export const useCreateProduct = (onClose: () => void) => {
   const router = useRouter();
   const { toast } = useToast();
   const productForm = useForm<ProductForm>({
@@ -61,7 +61,8 @@ export const useCreateProduct = () => {
     const response = await createProduct(formData);
 
     if (!response.error) {
-      router.push('/admin/products');
+      onClose();
+      router.replace(router.asPath);
       toast({ type: 'success', message: 'Product created' });
     } else {
       toast({ type: 'error', message: 'Failed to create product' });
