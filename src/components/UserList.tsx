@@ -1,11 +1,27 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { useToast } from '@/store/useToast';
 import { UserProfile } from '@/types/userModel';
+import { makeAdmin } from '@/utils/api/adminApi';
+import Switch from './Switch';
 
 interface Props {
   users: (UserProfile & { _id: string })[];
 }
 
-const UserList: FC<Props> = ({ users }) => {
+const UserList: FC<Props> = ({ users: initUsers }) => {
+  const [users, setUsers] = useState(initUsers);
+  const { toast } = useToast();
+
+  const handleChange = async (id: string, value: boolean) => {
+    const backup = [...users];
+    setUsers((prev) => prev.map((x) => (x._id === id ? { ...x, admin: value } : x)));
+    const response = await makeAdmin(id, !!value);
+    if (response.error) {
+      setUsers(backup);
+      toast({ type: 'error', message: 'Failed to change admin role' });
+    }
+  };
+
   return (
     <div>
       <h2>Users</h2>
@@ -23,7 +39,9 @@ const UserList: FC<Props> = ({ users }) => {
           <span>{x.country}</span>
           <span>{x.firstname}</span>
           <span>{x.lastname}</span>
-          <span>{x.admin && 'yes'}</span>
+          <span>
+            <Switch value={!!x.admin} onChange={() => handleChange(x._id, !x.admin)} />
+          </span>
         </div>
       ))}
     </div>

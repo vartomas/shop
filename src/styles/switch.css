@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+.switch {
+  width: 40px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.switch--true {
+  background-color: #8ac926;
+}
+
+.switch--false {
+  background-color: #ff595e;
+}
+
+.switch__toggle {
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 16px;
+  height: 16px;
+  transition: left 0.2s ease-in-out;
+}
+
+.switch__toggle--true {
+  top: 2px;
+  left: 22px;
+}
+
+.switch__toggle--false {
+  top: 2px;
+  left: 2px;
+}

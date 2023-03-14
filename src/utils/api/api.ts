@@ -26,7 +26,7 @@ export const api = {
   request: async <T>(props: RequestParams): Promise<{ data: T | null; error: unknown }> => {
     try {
       const response = await fetch(baseUrl + props.url + (props.params ? createParamsString(props.params) : ''), {
-        method: props.method,
+        method: props.method || 'POST',
         headers: props.formData
           ? undefined
           : {
