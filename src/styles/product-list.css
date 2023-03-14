@@ -19,7 +19,7 @@
 }
 
 .products__list__item:hover {
-  background-color: rgb(255, 240, 221);
+  background-color: #fefae0;
 }
 
 .products__list__item span {

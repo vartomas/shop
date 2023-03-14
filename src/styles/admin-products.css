@@ -5,3 +5,29 @@
 .admin-products__users-button {
   margin-left: 8px;
 }
+
+.delete-modal-content {
+  color: white;
+}
+
+.delete-modal-content__header {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.delete-modal-content__title {
+  margin-bottom: 4px;
+}
+
+.delete-modal-content__id {
+  margin-bottom: 16px;
+}
+
+.delete-modal-content__buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.delete-modal-content__buttons__cancel {
+  margin-right: 8px;
+}

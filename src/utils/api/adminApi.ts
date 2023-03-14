@@ -7,3 +7,10 @@ export const createProduct = (formData: FormData) =>
     body: formData,
     formData: true,
   });
+
+export const deleteProduct = (id: string) =>
+  api.request({
+    method: 'POST',
+    url: 'admin/deleteproduct',
+    body: { id },
+  });

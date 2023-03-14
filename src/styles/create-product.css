@@ -1,4 +1,7 @@
+@import 'variables.css';
+
 .create-product {
+  background-color: var(--primary-color);
   margin: auto;
   padding: 8px;
   margin-top: 24px;
