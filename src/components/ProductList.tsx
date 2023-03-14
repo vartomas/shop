@@ -6,9 +6,11 @@ import IconButton from './IconButton';
 
 interface Props {
   products: ProductDto[];
+  onSelectForEdit: (_id: string) => void;
+  onSelectForDelete: (_id: string) => void;
 }
 
-const ProductList: FC<Props> = ({ products }) => {
+const ProductList: FC<Props> = ({ products, onSelectForEdit, onSelectForDelete }) => {
   return (
     <div className="products">
       <h2>Products</h2>
@@ -32,11 +34,13 @@ const ProductList: FC<Props> = ({ products }) => {
             <span title={x.image}>{x.image}</span>
             <span title={x._id}>{x._id}</span>
             <span className="products__list__item__buttons">
-              <IconButton size="small" Icon={MdEdit} />
-              <IconButton size="small" Icon={MdDelete} />
+              <IconButton size="small" Icon={MdEdit} onClick={() => onSelectForEdit(x._id)} />
+              <IconButton size="small" Icon={MdDelete} onClick={() => onSelectForDelete(x._id)} />
             </span>
           </div>
         ))}
+
+        {products.length === 0 && <span>No products to display</span>}
       </div>
     </div>
   );

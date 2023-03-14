@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Divider from '@/components/Divider';
+import Modal from '@/components/Modal';
 import ProductList from '@/components/ProductList';
 import { Product } from '@/models/product';
 import { ProductDto } from '@/types/productModel';
@@ -15,7 +16,25 @@ interface Props {
 }
 
 const Admin: FC<Props> = ({ isAdmin, products }) => {
+  const [editProductId, setEditProductId] = useState<string>();
+  const [deleteProductId, setDeleteProductId] = useState<string>();
+
   if (!isAdmin) return <Custom404Page />;
+
+  const onCloseModal = () => {
+    setEditProductId(undefined);
+    setDeleteProductId(undefined);
+  };
+
+  const selectForEdit = (_id: string) => {
+    setEditProductId(_id);
+  };
+
+  const selectForDelete = (_id: string) => {
+    setDeleteProductId(_id);
+  };
+
+  const modalOpen = !!editProductId || !!deleteProductId;
 
   return (
     <div className="admin-products">
@@ -26,7 +45,13 @@ const Admin: FC<Props> = ({ isAdmin, products }) => {
         <Button title="Manage users" />
       </Link>
       <Divider />
-      <ProductList products={products} />
+      <ProductList products={products} onSelectForEdit={selectForEdit} onSelectForDelete={selectForDelete} />
+
+      {modalOpen && (
+        <Modal onClose={onCloseModal}>
+          <p>{editProductId || deleteProductId}</p>
+        </Modal>
+      )}
     </div>
   );
 };

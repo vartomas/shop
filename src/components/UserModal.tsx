@@ -1,8 +1,7 @@
 import { FC, useEffect } from 'react';
-import { MdClose } from 'react-icons/md';
 import { useUser } from '@/store/useUser';
-import IconButton from './IconButton';
 import Login from './Login';
+import Modal from './Modal';
 import Profile from './Profile';
 
 interface Props {
@@ -19,16 +18,7 @@ const UserModal: FC<Props> = ({ open, onClose }) => {
 
   if (!open) return null;
 
-  return (
-    <div className="user-modal-overlay">
-      <div className="user-modal">
-        <div className="user-modal__close-btn">
-          <IconButton size="small" Icon={MdClose} onClick={onClose} />
-        </div>
-        {currentUser ? <Profile /> : <Login />}
-      </div>
-    </div>
-  );
+  return <Modal onClose={onClose}>{currentUser ? <Profile /> : <Login />}</Modal>;
 };
 
 export default UserModal;

@@ -15,7 +15,11 @@
   display: grid;
   grid-template-columns: 3fr 3fr 1fr 3fr 3fr 1fr;
   column-gap: 8px;
-  margin-bottom: 4px;
+  padding: 2px 0;
+}
+
+.products__list__item:hover {
+  background-color: rgb(255, 240, 221);
 }
 
 .products__list__item span {

@@ -1,7 +1,6 @@
 @import 'not-found.css';
 @import 'layout.css';
 @import 'header.css';
-@import 'user-modal.css';
 @import 'text-input.css';
 @import 'icon-button.css';
 @import 'button.css';
@@ -14,3 +13,4 @@
 @import 'create-product.css';
 @import 'admin-products.css';
 @import 'product-list.css';
+@import 'modal.css';
