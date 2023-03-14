@@ -1,6 +1,7 @@
 :root {
-  --primary-color: #283618;
-  --primary-color-hover: #31421d;
-  --secondary-color: #606c38;
-  --secondary-color-hover: #707e42;
+  --primary-color: #1d3557;
+  --primary-color-hover: #244169;
+  --secondary-color: #457b9d;
+  --secondary-color-hover: #4e8aaf;
+  --error-color: #fd6f67;
 }

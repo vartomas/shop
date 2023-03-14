@@ -1,5 +1,6 @@
 .login__header {
   padding-bottom: 8px;
+  color: white;
 }
 
 .login__button-container {
@@ -10,6 +11,7 @@
 
 .login__helper-text {
   text-align: center;
+  color: white;
 }
 
 .login__helper-text__link {

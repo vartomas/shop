@@ -1,7 +1,7 @@
 @import 'variables.css';
 
 .header {
-  padding: 8px;
+  padding: 8px 12px;
   background-color: var(--primary-color);
 
   display: flex;
@@ -28,12 +28,12 @@
 .header__user__icon {
   font-size: 36px;
   cursor: pointer;
-  color: black;
+  color: var(--secondary-color);
   transition: color 0.2s ease-in-out;
 }
 
 .header__user__icon:hover {
-  color: var(--primary-color-hover);
+  color: var(--secondary-color-hover);
 }
 .header__user__logout {
   margin-left: 16px;
