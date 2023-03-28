@@ -6,6 +6,7 @@ import { useUser } from '@/store/useUser';
 import Avatar from './Avatar';
 import Button from './Button';
 import IconButton from './IconButton';
+import ShoppingCart from './ShoppingCart';
 import UserModal from './UserModal';
 
 const Header = () => {
@@ -32,6 +33,7 @@ const Header = () => {
             </Link>
           </div>
         )}
+        <ShoppingCart />
         {currentUser && (
           <div className="header__user__logout">
             <Button title="Log out" onClick={logOut} />

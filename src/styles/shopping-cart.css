@@ -1,0 +1,22 @@
+@import 'variables.css';
+
+.shopping-cart {
+  color: var(--secondary-color);
+  position: relative;
+}
+
+.shopping-cart__product-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  font-size: 10px;
+  background-color: var(--error-color);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
