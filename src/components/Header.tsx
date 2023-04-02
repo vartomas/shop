@@ -11,7 +11,8 @@ import UserModal from './UserModal';
 
 const Header = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
-  const { currentUser, logOut } = useUser();
+  const { logOut } = useUser();
+  const currentUser = useUser((state) => state.currentUser);
 
   return (
     <div className="header">

@@ -3,6 +3,7 @@
 .shopping-cart {
   color: var(--secondary-color);
   position: relative;
+  cursor: pointer;
 }
 
 .shopping-cart__product-count {
