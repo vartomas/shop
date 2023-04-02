@@ -1,0 +1,15 @@
+@import 'variables.css';
+
+.home {
+  height: 700px;
+  color: var(--primary-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home__header {
+  margin-bottom: 8px;
+}
