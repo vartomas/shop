@@ -2,11 +2,10 @@ import { FC } from 'react';
 import ProductCard from '@/components/ProductCard';
 import { Product } from '@/models/product';
 import { ProductDto } from '@/types/productModel';
+import { GetPropType } from '@/types/props';
 import { connect } from '@/utils/mongodb';
 
-interface Props {
-  products: ProductDto[];
-}
+type Props = GetPropType<typeof getServerSideProps>;
 
 const Products: FC<Props> = ({ products }) => {
   return (
@@ -28,7 +27,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      products: JSON.parse(JSON.stringify(products)),
+      products: JSON.parse(JSON.stringify(products)) as ProductDto[],
     },
   };
 };

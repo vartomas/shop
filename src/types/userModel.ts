@@ -1,4 +1,5 @@
 export interface UserProfile {
+  _id: string;
   email: string;
   firstname: string | undefined;
   lastname: string | undefined;

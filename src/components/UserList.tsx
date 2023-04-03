@@ -5,7 +5,7 @@ import { makeAdmin } from '@/utils/api/adminApi';
 import Switch from './Switch';
 
 interface Props {
-  users: (UserProfile & { _id: string })[];
+  users: UserProfile[];
 }
 
 const UserList: FC<Props> = ({ users: initUsers }) => {

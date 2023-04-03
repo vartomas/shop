@@ -10,15 +10,13 @@ import UpdateProductModal from '@/components/UpdateProductModal';
 import { Product } from '@/models/product';
 import { useToast } from '@/store/useToast';
 import { ProductDto } from '@/types/productModel';
+import { GetPropType } from '@/types/props';
 import { deleteProduct } from '@/utils/api/adminApi';
 import { getAuthUser } from '@/utils/auth';
 import { connect } from '@/utils/mongodb';
 import Custom404Page from '../404';
 
-interface Props {
-  isAdmin: boolean;
-  products: ProductDto[];
-}
+type Props = GetPropType<typeof getServerSideProps>;
 
 const Products: FC<Props> = ({ isAdmin, products }) => {
   const [editProductId, setEditProductId] = useState<string>();
@@ -103,13 +101,13 @@ export const getServerSideProps = async (context: any) => {
     return {
       props: {
         isAdmin: true,
-        products: JSON.parse(JSON.stringify(products)),
+        products: JSON.parse(JSON.stringify(products)) as ProductDto[],
       },
     };
   }
 
   return {
-    props: { isAdmin: false },
+    props: { isAdmin: false, products: [] },
   };
 };
 

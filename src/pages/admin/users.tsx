@@ -4,15 +4,13 @@ import Button from '@/components/Button';
 import Divider from '@/components/Divider';
 import UserList from '@/components/UserList';
 import { User } from '@/models/user';
+import { GetPropType } from '@/types/props';
 import { UserProfile } from '@/types/userModel';
 import { getAuthUser } from '@/utils/auth';
 import { connect } from '@/utils/mongodb';
 import Custom404Page from '../404';
 
-interface Props {
-  isAdmin: boolean;
-  users: (UserProfile & { _id: string })[];
-}
+type Props = GetPropType<typeof getServerSideProps>;
 
 const Users: FC<Props> = ({ isAdmin, users }) => {
   if (!isAdmin) return <Custom404Page />;
@@ -57,13 +55,13 @@ export const getServerSideProps = async (context: any) => {
     return {
       props: {
         isAdmin: true,
-        users: JSON.parse(JSON.stringify(users)),
+        users: JSON.parse(JSON.stringify(users)) as UserProfile[],
       },
     };
   }
 
   return {
-    props: { isAdmin: false },
+    props: { isAdmin: false, users: [] },
   };
 };
 
