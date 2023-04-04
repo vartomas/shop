@@ -29,15 +29,12 @@ const Cart = () => {
             <div className="cart-page__list__item">
               <h3>{x.product.title}</h3>
               <span>
+                {x.quantity} x {+x.product.price / 100}$ = {((+x.product.price * x.quantity) / 100).toFixed(2)}$
                 <Button title="+" onClick={() => increaseQuantity(x.product._id)} />
-                <span className="cart-page__list__item__quantity">{x.quantity}</span>
                 <Button
                   title="-"
                   onClick={() => (x.quantity > 1 ? decreaseQuantity(x.product._id) : removeProduct(x.product._id))}
                 />
-              </span>
-              <span>
-                {x.quantity} x {+x.product.price / 100}$ = {((+x.product.price * x.quantity) / 100).toFixed(2)}$
               </span>
             </div>
             <Divider />

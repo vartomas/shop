@@ -14,12 +14,8 @@
   justify-content: space-between;
 }
 
-.cart-page__list__item__quantity {
-  width: 50px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.cart-page__list__item button {
+  margin-left: 8px;
 }
 
 .cart-page__total {
