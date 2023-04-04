@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { MdShoppingCart } from 'react-icons/md';
 import { useCart } from '@/store/useCart';
 import IconButton from './IconButton';
 
 const ShoppingCart = () => {
-  const { products } = useCart();
+  const products = useCart((state) => state.products);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -16,10 +17,12 @@ const ShoppingCart = () => {
   }
 
   return (
-    <div className="shopping-cart">
-      <IconButton Icon={MdShoppingCart} />
-      {products.length > 0 && <div className="shopping-cart__product-count">{products.length}</div>}
-    </div>
+    <Link href="/cart">
+      <div className="shopping-cart">
+        <IconButton Icon={MdShoppingCart} />
+        {products.length > 0 && <div className="shopping-cart__product-count">{products.length}</div>}
+      </div>
+    </Link>
   );
 };
 

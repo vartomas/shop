@@ -1,0 +1,34 @@
+.cart-page {
+  padding: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cart-page__list {
+  margin-top: 24px;
+}
+
+.cart-page__list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-page__list__item__quantity {
+  width: 50px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-page__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-page__buttons {
+  text-align: right;
+  margin-top: 12px;
+}

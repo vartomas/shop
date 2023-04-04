@@ -10,7 +10,7 @@ interface Props {
 
 const ProductCard: FC<Props> = ({ item }) => {
   const { addProduct } = useCart();
-  const { products } = useCart();
+  const products = useCart((state) => state.products);
   const [loaded, setLoaded] = useState(false);
   const isProductAlreadyInCart = products.some((x) => x.product._id === item._id);
 
