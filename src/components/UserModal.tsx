@@ -14,7 +14,7 @@ const UserModal: FC<Props> = ({ open, onClose }) => {
 
   useEffect(() => {
     onClose();
-  }, [currentUser, onClose]);
+  }, [currentUser]);
 
   if (!open) return null;
 
