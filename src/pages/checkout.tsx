@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { Appearance, StripeElementsOptions, loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '@/components/CheckoutForm';
 import { useCart } from '@/store/useCart';
-import Order from './order';
+import Order from '../components/Order';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
 
