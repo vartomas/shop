@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Button from '@/components/Button';
 import Divider from '@/components/Divider';
 import UserModal from '@/components/UserModal';
@@ -49,7 +50,9 @@ const Cart = () => {
       </div>
       <div className="cart-page__buttons">
         {!user && <Button title="Login" onClick={() => setUserModalOpen(true)} />}{' '}
-        <Button title={user ? 'Checkout' : 'Checkout as guest'} onClick={() => console.log(products)} />
+        <Link href="/checkout">
+          <Button title={user ? 'Checkout' : 'Checkout as guest'} onClick={() => console.log(products)} />
+        </Link>
       </div>
       <UserModal open={userModalOpen} onClose={() => setUserModalOpen(false)} />
     </div>

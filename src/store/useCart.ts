@@ -8,6 +8,7 @@ interface CartState {
   removeProduct: (id: string) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
+  clear: () => void;
 }
 
 export const useCart = create<CartState>()(
@@ -30,6 +31,7 @@ export const useCart = create<CartState>()(
           products: get().products.map((x) => (x.product._id === id ? { ...x, quantity: x.quantity - 1 } : x)),
         }));
       },
+      clear: () => set(() => ({ products: [] })),
     }),
     { name: 'shopping-cart' }
   )

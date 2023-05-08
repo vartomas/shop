@@ -1,0 +1,25 @@
+@import 'variables.css';
+
+.checkout-form {
+  background-color: var(--primary-color);
+  max-width: 800px;
+  margin: auto;
+  padding: 8px;
+  margin-top: 8px;
+  color: white;
+}
+
+.checkout-form__shipping-header {
+  margin-bottom: 16px;
+}
+
+.checkout-form__card-header {
+  margin: 16px 0;
+}
+
+.checkout-form__pay-button {
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: center;
+}
