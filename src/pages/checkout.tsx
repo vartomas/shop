@@ -51,6 +51,10 @@ const Checkout = () => {
     return null;
   }
 
+  if (!products.length && !clientSecretParam) {
+    return <>No products in cart</>;
+  }
+
   return (
     <div>
       {clientSecret && (
