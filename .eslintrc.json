@@ -1,11 +1,13 @@
 {
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "eslint-plugin-mano"],
   "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
     "max-lines": ["warn", 200],
     "no-duplicate-imports": "warn",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-unused-vars": "error",
+    "mano/no-tomas-in-variable-name": "error",
+    "mano/max-arguments": "error"
   },
   "ignorePatterns": ["src/types/**", "src/styles/**"]
 }
